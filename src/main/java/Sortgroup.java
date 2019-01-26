@@ -29,7 +29,7 @@ public class Sortgroup {
 
     public static void main(String[] args){
 
-        String str="сапог сарай арбуз болт бокс биржа аэропорт филин аэлита сэр скоро";
+        String str="сапог семга сарай арбуз болт бокс биржа аэропорт филин аэлита сэр скоро";
 
         String[] word=str.split(" ");
         Arrays.sort(word);
@@ -80,7 +80,7 @@ public class Sortgroup {
             result.deleteCharAt(result.length()-1);
             key.append(firstsLetter[i]+"=");
             StringBuilder[][] c={{key},{result}};
-            System.out.print(Arrays.deepToString(c));
+            System.out.print(Arrays.deepToString(c)+"  ");
             key.delete(0,result.length());
             result.delete(0, result.length());
 
