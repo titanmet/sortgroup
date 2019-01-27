@@ -29,7 +29,7 @@ public class Sortgroup {
 
     public static void main(String[] args){
 
-        String str="сапог семга сарай арбуз болт бокс биржа аэропорт филин аэлита сэр скоро";
+        String str="сапог семга сарай арбуз болт бокс биржа аэропорт филин аэлита сэр скоро завтрак зов лев клоун";
 
         String[] word=str.split(" ");
         Arrays.sort(word);
@@ -72,6 +72,8 @@ public class Sortgroup {
         StringBuilder result=new StringBuilder();
         StringBuilder key=new StringBuilder();
 
+        Map<StringBuilder,StringBuilder> group=new HashMap<>();
+        System.out.print("[ ");
         for (int i = 0; i < firstsLetter.length; i++) {
             for (int j = 0; j < words.length; j++) {
                 if ((firstsLetter[i].equals(words[j].substring(0, 1))))
@@ -79,11 +81,16 @@ public class Sortgroup {
             }
             result.deleteCharAt(result.length()-1);
             key.append(firstsLetter[i]+"=");
-            StringBuilder[][] c={{key},{result}};
-            System.out.print(Arrays.deepToString(c)+"  ");
+//          StringBuilder[][] c={{key},{result}};
+//          System.out.print(Arrays.deepToString(c)+"  ");
+            group.put(key,result);
+            for (Map.Entry<StringBuilder,StringBuilder> item: group.entrySet())
+                System.out.print(item.getKey()+"["+item.getValue()+"] ");
             key.delete(0,result.length());
             result.delete(0, result.length());
-
         }
+        System.out.print("]");
+
+
     }
 }
