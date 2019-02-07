@@ -29,31 +29,23 @@ class Main {
         letterList.add(s.substring(0,1));
         }
         Map<String, Long> letterMap = letterList.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-        letterList.removeIf(s -> letterMap.get(s).intValue() == 1);
+        letterList.removeIf(p -> letterMap.get(p).intValue() == 1);
         List<String> wordsList=new ArrayList<>();
-        
         for (int j = 0; j < wordList.size(); j++) {
             for (int i =   0; i < letterList.size(); i++) {
                 if (wordList.get(j).substring(0,1).equals(letterList.get(i)))
                     wordsList.add(wordList.get(j));
             }
         }
-        
-        List<String> firstsLetter=new ArrayList<String>();
+        List<String> fs=new ArrayList<String>();
         for(String s: letterList)
-        firstsLetter.add(s);
-        
-        List<String> words=new ArrayList<String>();
+        fs.add(s);
+        List<String> wd=new ArrayList<String>();
         for(String s: wordsList)
-        words.add(s);
+        wd.add(s);
+        List<String> firstsLetter = fs.stream().distinct().sorted().collect(Collectors.toList());
+        List<String> words = wd.stream().distinct().sorted().collect(Collectors.toList());
         
-        
-        // firstsLetter=noDubl(firstsLetter);
-        // words=noDubl(words);
-
-        // Comparator<String> stringLengthComparator = new StringLengthSort();
-        // Arrays.sort(words, stringLengthComparator);
-
         StringBuilder result=new StringBuilder();
         StringBuilder key=new StringBuilder();
 
@@ -73,7 +65,5 @@ class Main {
             result.delete(0, result.length());
         }
         System.out.print("]");
-
-
     }
 }
