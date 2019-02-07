@@ -3,25 +3,11 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.Comparator;
 
-class StringLengthSort implements Comparator<String> {
-    @Override
-    public int compare(String o1, String o2) {
-        if(o1.length() < o2.length()){
-            return 1;
-        }else{
-            if(o1.length() > o2.length()){
-                return -1;
-            }else{
-                return 0;
-            }
-        }
-    }
-}
 class Main {
 
        public static void main(String[] args){
 
-        String str="сапог семга сарай арбуз болт бокс биржа аэропорт филин аэлита сэр скоро завтрак зов лев клоун";
+        String str="сапог семга сарай зоология вольт занзибар арбуз болт бокс биржа аэропорт филин ворона бородач аэлита вал сэр скоро завтрак зов лев клоун";
 
         ArrayList<String> wordList = new ArrayList<>(Arrays.asList(str.split(" ")));
         List<String> letterList = new ArrayList<>();
@@ -44,7 +30,7 @@ class Main {
         for(String s: wordsList)
         wd.add(s);
         List<String> firstsLetter = fs.stream().distinct().sorted().collect(Collectors.toList());
-        List<String> words = wd.stream().distinct().sorted().collect(Collectors.toList());
+        List<String> words = wd.stream().sorted((o1,o2)->o2.compareTo(o1)).distinct().collect(Collectors.toList());
         
         StringBuilder result=new StringBuilder();
         StringBuilder key=new StringBuilder();
