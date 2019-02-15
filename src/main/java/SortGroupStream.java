@@ -4,7 +4,7 @@ import java.util.stream.Collectors;
 
 class SortGroupStream {
 
-    public static void main(String[] args){
+     public static void main(String[] args){
 
         String str="сапог семга сарай зоология вольт занзибар арбуз болт бокс биржа аэропорт филин ворона бородач аэлита вал сэр скоро завтрак зов лев клоун";
 
@@ -22,14 +22,14 @@ class SortGroupStream {
                     wordsList.add(wordList.get(j));
             }
         }
-        List<String> fs=new ArrayList<String>();
+        Set<String> fs=new TreeSet<String>();
         for(String s: letterList)
             fs.add(s);
-        List<String> wd=new ArrayList<String>();
+        Set<String> wd=new TreeSet<String>();
         for(String s: wordsList)
             wd.add(s);
-        List<String> firstsLetter = fs.stream().distinct().sorted().collect(Collectors.toList());
-        List<String> words = wd.stream().sorted((o1,o2)->o2.length()-(o1.length())).distinct().collect(Collectors.toList());
+        List<String> firstsLetter = fs.stream().collect(Collectors.toList());
+        List<String> words = wd.stream().sorted((o1,o2)->o2.length()-(o1.length())).collect(Collectors.toList());    // .distinct (no duplicat) if not Set
         StringBuilder result=new StringBuilder();
         StringBuilder key=new StringBuilder();
         Map<StringBuilder,StringBuilder> group=new HashMap<>();
